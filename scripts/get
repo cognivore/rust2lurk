@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Check that bin/lurkrs, bin/preprocess.sh, ...
+# don't exist, and if they don't, download
+# https://github.com/cognivore/rust2lurk/releases/download/v0.1-lurk-week-cache/lurkrs
+# https://github.com/cognivore/rust2lurk/releases/download/v0.1-lurk-week-cache/yatima
+# https://github.com/cognivore/rust2lurk/releases/download/v0.1-lurk-week-cache/wat-wrapper
+# https://github.com/cognivore/rust2lurk/releases/download/v0.1-lurk-week-cache/preprocess.sh
+
+http_source="https://github.com/cognivore/rust2lurk/releases/download/v0.1-lurk-week-cache"
+
+mkdir -p bin || true
+
+files=(bin/lurkrs bin/preprocess.sh bin/yatima bin/wat-wrapper)
+for file in "${files[@]}"; do
+  echo "Processing $file"
+  if [ ! -f "$file" ]; then
+    echo "Downloading $file"
+    wget "$http_source/$(basename $file)" -O "$file"
+  fi
+done
