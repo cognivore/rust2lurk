@@ -5,6 +5,7 @@ A demo of compiling rust to lurk via yatima-lang
 ## Third party dependencies
 
  - `wabt` (installed with `flake.nix`)
+ - `sed` (installed with `flake.nix`)
 
 ## Lurk-lab dependencies
 

@@ -3,7 +3,7 @@
         nixpkgs.url = "github:NixOS/nixpkgs";
     };
 
-    outputs = {self, nixpkgs, goo}:
+    outputs = {self, nixpkgs}:
         let pkgs = nixpkgs.legacyPackages.x86_64-linux;
         in {
             defaultPackage.x86_64-linux = pkgs.hello;
@@ -12,6 +12,7 @@
                 pkgs.mkShell {
                     buildInputs = [
                         pkgs.wabt
+                        pkgs.gnused
                     ];
                 };
         };
